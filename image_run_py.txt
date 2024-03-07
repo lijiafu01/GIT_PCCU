@@ -1,0 +1,38 @@
+from PIL import Image
+
+# 讀取圖片
+print("....image read....")
+im = Image.open('satish.png')
+im.show()
+print("...image format...")
+print('Image Format: ', im.format)  # 打印圖片格式
+print("Size of Image WxH: %dx%d" % im.size)  # 打印圖片大小
+print('Color Model: ', im.mode)  # 打印顏色模型
+
+# 轉換為黑白
+print("....convert to black and white....")
+bw = im.convert('L')
+bw.show()
+bw.save('satish_bw.png')  # 保存黑白圖片
+
+# 旋轉圖片
+print("....rotate image....")
+rotated = im.rotate(120)  # 旋轉120度
+rotated.show()
+rotated.save('satish_rotated.png')  # 保存旋轉後的圖片
+
+# 裁剪圖片
+print("....crop image....")
+# 更改box的尺寸以裁剪不同的部分
+box = (0, 0, 100, 100)
+cropped_image = im.crop(box)
+cropped_image.show()
+cropped_image.save('satish_cropped.png')  # 保存裁剪後的圖片
+
+# 縮小圖片
+print("....thumbnail image....")
+# 更改max_size以獲得不同的尺寸
+max_size = (100, 100)
+im.thumbnail(max_size)
+im.show()
+im.save('satish_thumbnail.png')  # 保存縮小後的圖片
